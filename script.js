@@ -1,5 +1,14 @@
 let students = []; // Array para armazenar os alunos e suas informações
 
+// Carregar os dados do localStorage quando a página for carregada
+window.onload = function() {
+  const storedStudents = localStorage.getItem('students');
+  if (storedStudents) {
+    students = JSON.parse(storedStudents);
+    displayStudents(); // Exibir os alunos salvos no localStorage
+  }
+};
+
 function addStudent() {
   const name = document.getElementById('student-name').value;
   const grades = [
@@ -32,10 +41,14 @@ function addStudent() {
   // Adicionar aluno ao array
   students.push({ name, grades, attendance, media });
 
+  // Salvar os dados no localStorage
+  localStorage.setItem('students', JSON.stringify(students));
+
   alert(`${name} adicionado com sucesso! \nMédia: ${media.toFixed(2)}\nFrequência: ${attendance}%`);
 
   // Limpar campos
   clearFields();
+  displayStudents(); // Exibir os alunos após adicionar
 }
 
 function clearFields() {
@@ -46,15 +59,25 @@ function clearFields() {
   }
 }
 
+function displayStudents() {
+  // Exibir os alunos salvos na lista
+  const studentList = document.getElementById('student-list');
+  studentList.innerHTML = ''; // Limpar a lista existente
+
+  students.forEach(student => {
+    const studentItem = document.createElement('li');
+    studentItem.textContent = `${student.name} - Média: ${student.media.toFixed(2)} - Frequência: ${student.attendance}%`;
+    studentList.appendChild(studentItem);
+  });
+}
+
 function showResults() {
   // Exibir resultados da turma
   const avgList = document.getElementById('avg-list');
-  const studentList = document.getElementById('student-list');
   const aboveAverageList = document.getElementById('above-average-list');
   const belowAttendanceList = document.getElementById('below-attendance-list');
 
   avgList.innerHTML = ''; // Limpar resultados anteriores
-  studentList.innerHTML = '';
   aboveAverageList.innerHTML = ''; // Limpar lista de alunos acima da média
   belowAttendanceList.innerHTML = ''; // Limpar lista de alunos com baixa frequência
 
@@ -69,16 +92,10 @@ function showResults() {
     });
     totalMedia += student.media;
     totalAttendance += student.attendance;
-
-    // Adicionar informações dos alunos na lista principal
-    const studentItem = document.createElement('li');
-    studentItem.textContent = `${student.name} - Média: ${student.media.toFixed(2)} - Frequência: ${student.attendance}%`;
-    studentList.appendChild(studentItem);
   });
 
   // Calcular a média da turma
   const classAverage = totalMedia / students.length;
-  const classAttendance = totalAttendance / students.length;
 
   // Exibir média da turma por disciplina
   totalGrades.forEach((total, index) => {
@@ -110,4 +127,11 @@ function showResults() {
   });
 
   document.getElementById('results').style.display = 'block'; // Exibir os resultados
+}
+
+// Função para limpar o localStorage
+function clearLocalStorage() {
+  localStorage.clear(); // Limpar todos os dados do localStorage
+  alert("Os dados foram limpos!");
+  location.reload(); // Recarregar a página para refletir as mudanças
 }

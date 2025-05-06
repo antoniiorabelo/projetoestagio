@@ -4,66 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistema de Notas - Professor Carlos</title>
+  <!-- Incluir o link do Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
+  <div class="container my-4">
+    <div class="header text-center mb-4">
       <h1>REGISTRO DE CLASSE DO PROFESSOR</h1>
     </div>
 
-    <div class="form-container">
-      <label for="student-name">Nome do Aluno</label>
-      <input type="text" id="student-name" placeholder="Digite o nome do aluno" required>
+    <div class="form-container p-4 bg-light rounded shadow">
+      <label for="student-name" class="form-label">Nome do Aluno</label>
+      <input type="text" id="student-name" class="form-control mb-3" placeholder="Digite o nome do aluno" required>
 
       <div class="grades">
-        <div class="grade-field">
-          <label for="discipline1">História</label>
-          <input type="number" id="grade1" min="0" max="10" placeholder="Nota de História" required>
+        <div class="grade-field mb-3">
+          <label for="discipline1" class="form-label">História</label>
+          <input type="number" id="grade1" class="form-control" min="0" max="10" placeholder="Nota de História" required>
         </div>
-        <div class="grade-field">
-          <label for="discipline2">Matemática</label>
-          <input type="number" id="grade2" min="0" max="10" placeholder="Nota de Matemática" required>
+        <div class="grade-field mb-3">
+          <label for="discipline2" class="form-label">Matemática</label>
+          <input type="number" id="grade2" class="form-control" min="0" max="10" placeholder="Nota de Matemática" required>
         </div>
-        <div class="grade-field">
-          <label for="discipline3">Educação Física</label>
-          <input type="number" id="grade3" min="0" max="10" placeholder="Nota de Educação Física" required>
+        <div class="grade-field mb-3">
+          <label for="discipline3" class="form-label">Educação Física</label>
+          <input type="number" id="grade3" class="form-control" min="0" max="10" placeholder="Nota de Educação Física" required>
         </div>
-        <div class="grade-field">
-          <label for="discipline4">Filosofia</label>
-          <input type="number" id="grade4" min="0" max="10" placeholder="Nota de Filosofia" required>
+        <div class="grade-field mb-3">
+          <label for="discipline4" class="form-label">Filosofia</label>
+          <input type="number" id="grade4" class="form-control" min="0" max="10" placeholder="Nota de Filosofia" required>
         </div>
-        <div class="grade-field">
-          <label for="discipline5">Geografia</label>
-          <input type="number" id="grade5" min="0" max="10" placeholder="Nota de Geografia" required>
+        <div class="grade-field mb-3">
+          <label for="discipline5" class="form-label">Geografia</label>
+          <input type="number" id="grade5" class="form-control" min="0" max="10" placeholder="Nota de Geografia" required>
         </div>
       </div>
 
-      <label for="attendance">Frequência (%)</label>
-      <input type="number" id="attendance" min="0" max="100" placeholder="Frequência (%)" required>
+      <label for="attendance" class="form-label">Frequência (%)</label>
+      <input type="number" id="attendance" class="form-control mb-3" min="0" max="100" placeholder="Frequência (%)" required>
 
-      <button id="add-student" onclick="addStudent()">Adicionar</button>
+      <button id="add-student" class="btn btn-success w-100" onclick="addStudent()">Adicionar</button>
     </div>
 
-    <div class="tabs">
-      <button onclick="showResults()">Exibir Resultados da Turma</button>
+    <div class="tabs text-center my-4">
+      <button class="btn btn-primary" onclick="showResults()">Exibir Resultados da Turma</button>
     </div>
 
     <div class="results" id="results">
       <h2>Média da Turma por Disciplina</h2>
-      <ul id="avg-list"></ul>
+      <ul id="avg-list" class="list-group mb-4"></ul>
 
       <h2>Notas e Frequência de Cada Aluno</h2>
-      <ul id="student-list"></ul>
+      <ul id="student-list" class="list-group mb-4"></ul>
 
       <h2>Alunos com Média Acima da Média da Turma</h2>
-      <ul id="above-average-list"></ul>
+      <ul id="above-average-list" class="list-group mb-4"></ul>
 
       <h2>Alunos com Frequência Abaixo de 75%</h2>
-      <ul id="below-attendance-list"></ul>
+      <ul id="below-attendance-list" class="list-group mb-4"></ul>
+    </div>
+
+    <div class="footer text-center my-4">
+      <button class="btn btn-danger" onclick="clearLocalStorage()">Limpar Armazenamento</button>
     </div>
   </div>
 
+  <!-- Incluir o script do Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
