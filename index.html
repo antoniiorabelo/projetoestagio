@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Notas - Professor Carlos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>REGISTRO DE CLASSE DO PROFESSOR</h1>
+    </div>
+
+    <div class="form-container">
+      <label for="student-name">Nome do Aluno</label>
+      <input type="text" id="student-name" placeholder="Digite o nome do aluno" required>
+
+      <div class="grades">
+        <div class="grade-field">
+          <label for="discipline1">História</label>
+          <input type="number" id="grade1" min="0" max="10" placeholder="Nota de História" required>
+        </div>
+        <div class="grade-field">
+          <label for="discipline2">Matemática</label>
+          <input type="number" id="grade2" min="0" max="10" placeholder="Nota de Matemática" required>
+        </div>
+        <div class="grade-field">
+          <label for="discipline3">Educação Física</label>
+          <input type="number" id="grade3" min="0" max="10" placeholder="Nota de Educação Física" required>
+        </div>
+        <div class="grade-field">
+          <label for="discipline4">Filosofia</label>
+          <input type="number" id="grade4" min="0" max="10" placeholder="Nota de Filosofia" required>
+        </div>
+        <div class="grade-field">
+          <label for="discipline5">Geografia</label>
+          <input type="number" id="grade5" min="0" max="10" placeholder="Nota de Geografia" required>
+        </div>
+      </div>
+
+      <label for="attendance">Frequência (%)</label>
+      <input type="number" id="attendance" min="0" max="100" placeholder="Frequência (%)" required>
+
+      <button id="add-student" onclick="addStudent()">Adicionar</button>
+    </div>
+
+    <div class="tabs">
+      <button onclick="showResults()">Exibir Resultados da Turma</button>
+    </div>
+
+    <div class="results" id="results">
+      <h2>Média da Turma por Disciplina</h2>
+      <ul id="avg-list"></ul>
+
+      <h2>Notas e Frequência de Cada Aluno</h2>
+      <ul id="student-list"></ul>
+
+      <h2>Alunos com Média Acima da Média da Turma</h2>
+      <ul id="above-average-list"></ul>
+
+      <h2>Alunos com Frequência Abaixo de 75%</h2>
+      <ul id="below-attendance-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
