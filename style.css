@@ -1,38 +1,45 @@
-/* Ajustes gerais de layout */
+/* Customização do layout */
 body {
+  background-color: #f0f2f5;
   font-family: 'Arial', sans-serif;
-  background-color: #f8f9fa; /* Fundo mais claro */
 }
 
-.container {
-  max-width: 800px;
-  margin-top: 30px;
+/* Estilo do Card */
+.card {
+  background-color: #fff;
+  border: none;
 }
 
-.header h1 {
-  font-size: 32px;
-  font-weight: bold;
+.card-body {
+  padding: 30px;
 }
 
-/* Estilos das listas */
-ul {
-  padding-left: 0;
-  list-style: none;
+.card h2 {
+  font-size: 24px;
+  color: #333;
 }
 
-.list-group-item {
-  margin-bottom: 10px;
-  background-color: #e9ecef;
-}
-
-.results h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-/* Customização dos botões */
-button {
+form .form-control {
+  border-radius: 8px;
+  padding: 12px;
   font-size: 16px;
-  padding: 10px;
+}
+
+/* Botões */
+button.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+button.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Links */
+a.text-primary {
+  color: #007bff;
+}
+
+a.text-primary:hover {
+  color: #0056b3;
 }

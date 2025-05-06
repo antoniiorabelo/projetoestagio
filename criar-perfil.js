@@ -1,21 +1,23 @@
-document.getElementById('criarPerfilForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-  
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-  
-    // Verificar se as senhas coincidem
-    if (password !== confirmPassword) {
-      alert('As senhas não coincidem!');
-      return;
-    }
-  
-    // Salvar o nome de usuário e senha no localStorage
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
-  
-    alert('Perfil criado com sucesso! Você pode fazer login agora.');
-    window.location.href = 'login.html'; // Redireciona para a página de login
-  });
-  
+// Lógica para criar o perfil
+document.getElementById("create-profile-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Previne o envio padrão do formulário
+
+  // Obter os valores dos campos de entrada
+  const username = document.getElementById("new-username").value;
+  const password = document.getElementById("new-password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+
+  // Verificar se as senhas correspondem
+  if (password !== confirmPassword) {
+    alert("As senhas não coincidem.");
+    return;
+  }
+
+  // Armazenar o usuário no localStorage
+  const user = { username, password };
+  localStorage.setItem('user', JSON.stringify(user));
+
+  // Exibir mensagem de sucesso e redirecionar para a página de login
+  alert("Perfil criado com sucesso! Agora você pode fazer login.");
+  window.location.href = "login.html"; // Redireciona para o login após a criação do perfil
+});

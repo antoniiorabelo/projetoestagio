@@ -1,35 +1,34 @@
 let students = []; // Array para armazenar os alunos e suas informações
 
 // Carregar os dados do localStorage quando a página for carregada
-window.onload = function() {
-  const storedStudents = localStorage.getItem('students');
-  if (storedStudents) {
-    students = JSON.parse(storedStudents);
-    displayStudents(); // Exibir os alunos salvos no localStorage
-  }
-};
+const storedStudents = localStorage.getItem('students');
+if (storedStudents) {
+  students = JSON.parse(storedStudents);
+  displayStudents(); // Exibir os alunos salvos no localStorage
+}
 
+// Função para adicionar um aluno
 function addStudent() {
   const name = document.getElementById('student-name').value;
   const grades = [
     {
-      subject: "História", // Disciplina fixada
+      subject: "História",
       grade: parseFloat(document.getElementById('grade1').value)
     },
     {
-      subject: "Matemática", // Disciplina fixada
+      subject: "Matemática",
       grade: parseFloat(document.getElementById('grade2').value)
     },
     {
-      subject: "Educação Física", // Disciplina fixada
+      subject: "Educação Física",
       grade: parseFloat(document.getElementById('grade3').value)
     },
     {
-      subject: "Filosofia", // Disciplina fixada
+      subject: "Filosofia",
       grade: parseFloat(document.getElementById('grade4').value)
     },
     {
-      subject: "Geografia", // Disciplina fixada
+      subject: "Geografia",
       grade: parseFloat(document.getElementById('grade5').value)
     },
   ];
@@ -51,6 +50,7 @@ function addStudent() {
   displayStudents(); // Exibir os alunos após adicionar
 }
 
+// Função para limpar os campos após adicionar um aluno
 function clearFields() {
   document.getElementById('student-name').value = '';
   document.getElementById('attendance').value = '';
@@ -59,8 +59,8 @@ function clearFields() {
   }
 }
 
+// Função para exibir os alunos salvos
 function displayStudents() {
-  // Exibir os alunos salvos na lista
   const studentList = document.getElementById('student-list');
   studentList.innerHTML = ''; // Limpar a lista existente
 
@@ -71,21 +71,20 @@ function displayStudents() {
   });
 }
 
+// Função para exibir os resultados da turma
 function showResults() {
-  // Exibir resultados da turma
   const avgList = document.getElementById('avg-list');
   const aboveAverageList = document.getElementById('above-average-list');
   const belowAttendanceList = document.getElementById('below-attendance-list');
 
-  avgList.innerHTML = ''; // Limpar resultados anteriores
-  aboveAverageList.innerHTML = ''; // Limpar lista de alunos acima da média
-  belowAttendanceList.innerHTML = ''; // Limpar lista de alunos com baixa frequência
+  avgList.innerHTML = ''; 
+  aboveAverageList.innerHTML = ''; 
+  belowAttendanceList.innerHTML = ''; 
 
-  let totalGrades = [0, 0, 0, 0, 0]; // Somatório das notas de cada disciplina
-  let totalMedia = 0; // Somatório das médias de todos os alunos
-  let totalAttendance = 0; // Somatório da frequência de todos os alunos
+  let totalGrades = [0, 0, 0, 0, 0]; 
+  let totalMedia = 0; 
+  let totalAttendance = 0; 
 
-  // Calcular média por disciplina e somar médias para a média geral da turma
   students.forEach(student => {
     student.grades.forEach((grade, index) => {
       totalGrades[index] += grade.grade;
@@ -94,10 +93,8 @@ function showResults() {
     totalAttendance += student.attendance;
   });
 
-  // Calcular a média da turma
   const classAverage = totalMedia / students.length;
 
-  // Exibir média da turma por disciplina
   totalGrades.forEach((total, index) => {
     const avg = total / students.length;
     const avgItem = document.createElement('li');
@@ -105,12 +102,10 @@ function showResults() {
     avgList.appendChild(avgItem);
   });
 
-  // Exibir a média geral da turma
   const classAverageItem = document.createElement('li');
   classAverageItem.textContent = `Média Geral da Turma: ${classAverage.toFixed(2)}`;
   avgList.appendChild(classAverageItem);
 
-  // Exibir alunos com média acima da média da turma
   students.forEach(student => {
     if (student.media > classAverage) {
       const aboveItem = document.createElement('li');
@@ -118,7 +113,6 @@ function showResults() {
       aboveAverageList.appendChild(aboveItem);
     }
 
-    // Exibir alunos com frequência abaixo de 75%
     if (student.attendance < 75) {
       const belowItem = document.createElement('li');
       belowItem.textContent = `${student.name} - Frequência: ${student.attendance}%`;
@@ -126,12 +120,12 @@ function showResults() {
     }
   });
 
-  document.getElementById('results').style.display = 'block'; // Exibir os resultados
+  document.getElementById('results').style.display = 'block';
 }
 
 // Função para limpar o localStorage
 function clearLocalStorage() {
-  localStorage.clear(); // Limpar todos os dados do localStorage
+  localStorage.clear();
   alert("Os dados foram limpos!");
-  location.reload(); // Recarregar a página para refletir as mudanças
+  location.reload();
 }
