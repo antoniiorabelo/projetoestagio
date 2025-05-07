@@ -10,35 +10,33 @@ if (storedStudents) {
 // Função para adicionar um aluno
 function addStudent() {
   const name = document.getElementById('student-name').value;
-  const grades = [
-    {
-      subject: "História",
-      grade: parseFloat(document.getElementById('grade1').value)
-    },
-    {
-      subject: "Matemática",
-      grade: parseFloat(document.getElementById('grade2').value)
-    },
-    {
-      subject: "Educação Física",
-      grade: parseFloat(document.getElementById('grade3').value)
-    },
-    {
-      subject: "Filosofia",
-      grade: parseFloat(document.getElementById('grade4').value)
-    },
-    {
-      subject: "Geografia",
-      grade: parseFloat(document.getElementById('grade5').value)
-    },
-  ];
+
+  // Capturar as notas e frequências
+  const grade1 = parseFloat(document.getElementById('grade1').value);
+  const grade2 = parseFloat(document.getElementById('grade2').value);
+  const grade3 = parseFloat(document.getElementById('grade3').value);
+  const grade4 = parseFloat(document.getElementById('grade4').value);
+  const grade5 = parseFloat(document.getElementById('grade5').value);
   const attendance = parseFloat(document.getElementById('attendance').value);
 
+  // Verificação de valores válidos
+  if (
+    grade1 < 0 || grade1 > 10 ||
+    grade2 < 0 || grade2 > 10 ||
+    grade3 < 0 || grade3 > 10 ||
+    grade4 < 0 || grade4 > 10 ||
+    grade5 < 0 || grade5 > 10 ||
+    attendance < 0 || attendance > 100
+  ) {
+    alert("Por favor, insira valores válidos para as notas (0 a 10) e frequência (0 a 100).");
+    return; // Impede o envio caso os dados estejam incorretos
+  }
+
   // Calcular a média do aluno
-  const media = grades.reduce((acc, grade) => acc + grade.grade, 0) / grades.length;
+  const media = (grade1 + grade2 + grade3 + grade4 + grade5) / 5;
 
   // Adicionar aluno ao array
-  students.push({ name, grades, attendance, media });
+  students.push({ name, grades: [grade1, grade2, grade3, grade4, grade5], attendance, media });
 
   // Salvar os dados no localStorage
   localStorage.setItem('students', JSON.stringify(students));
@@ -87,7 +85,7 @@ function showResults() {
 
   students.forEach(student => {
     student.grades.forEach((grade, index) => {
-      totalGrades[index] += grade.grade;
+      totalGrades[index] += grade;
     });
     totalMedia += student.media;
     totalAttendance += student.attendance;
