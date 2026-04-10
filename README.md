@@ -1,106 +1,97 @@
-# EducaFácil - Sistema de Gestão de Notas e Frequência
+# 🎓 Sistema de Processamento de Notas - dti digital
 
-**EducaFácil** é um sistema web desenvolvido para ajudar professores a gerenciar as notas, medias e frequências de seus alunos de forma simples e eficiente. O sistema permite registrar, visualizar e gerenciar as notas de diferentes disciplinas, além de controlar a presença dos alunos.
-
----
-
-## Como Funciona
-
-### 1. **Criação de Perfil**
-   - A primeira página que o usuário vê permite que ele crie um perfil com um nome de usuário e senha.
-   - O usuário insere um nome de usuário único, uma senha e uma confirmação da senha.
-   - Se as senhas coincidirem, o perfil será armazenado no **localStorage** e o usuário será redirecionado para a página de login.
-
-### 2. **Login**
-   - Após criar o perfil, o usuário pode fazer login fornecendo o nome de usuário e a senha criados.
-   - As credenciais são verificadas no **localStorage**, e o usuário será redirecionado para a página de **Adicionar Notas** se o login for bem-sucedido.
-
-### 3. **Adicionar Notas e Frequência**
-   - Na página de **Adicionar Notas**, o professor pode inserir:
-     - **Notas** de cinco disciplinas (História, Matemática, Educação Física, Filosofia, Geografia).
-     - **Frequência** de cada aluno.
-   - As notas são validadas para garantir que estejam entre 0 e 10, e a frequência é validada para garantir que esteja entre 0% e 100%.
-
-### 4. **Exibir Resultados**
-   - O sistema calcula automaticamente:
-     - A **média** de cada aluno nas disciplinas.
-     - A **média geral da turma** em cada disciplina.
-   - Também exibe relatórios:
-     - **Alunos com média superior à média da turma**.
-     - **Alunos com frequência abaixo de 75%**.
-
-### 5. **Armazenamento Local**
-   - As informações dos alunos, notas e frequência são armazenadas no **localStorage** do navegador, garantindo que os dados não se percam durante a navegação entre páginas.
+Este projeto foi desenvolvido como resolução do desafio técnico para a vaga de estágio na dti digital. O sistema permite o cadastro de alunos com as suas respetivas notas e frequência, processando esses dados no back-end para gerar um relatório de desempenho da turma.
 
 ---
 
-## Lista de Premissas Assumidas
+## 📸 Demonstração do Sistema
 
-- **Uso de `localStorage`**: O sistema utiliza `localStorage` para armazenar as informações de login, notas e frequência dos alunos. Isso garante que as informações não se percam entre recarregamentos da página, mas não oferece persistência entre dispositivos ou sessões diferentes.
+### Versão para Computador (Desktop)
+Aqui pode ver o painel principal com o formulário de entrada e os resultados da turma processados.
 
-- **Acesso ao Sistema**: O sistema foi desenvolvido para ser acessado diretamente através de um navegador, sem a necessidade de backend. Portanto, a persistência dos dados é limitada ao navegador do usuário.
+![Desktop View](./screenshots/desktop-view.png)
 
-- **Validação Básica de Dados**: O sistema valida as notas (de 0 a 10) e a frequência (de 0% a 100%) no momento do cadastro. No entanto, não há validações de segurança para proteger contra manipulação de dados.
+### Versão Mobile (Responsividade)
+O design foi construído com foco na experiência do utilizador em qualquer dispositivo, adaptando-se para ecrãs pequenos.
 
-- **Compatibilidade**: O sistema foi desenvolvido para ser utilizado em navegadores modernos (Chrome, Firefox, etc.).
 
-- **Não há suporte a múltiplos usuários simultâneos**: O sistema não possui funcionalidades para múltiplos usuários ao mesmo tempo. A gestão de alunos é feita por um único professor que possui um perfil.
+  <img src="./screenshots/mobile-view.png" width="300" title="Versão Mobile">
 
----
 
-## Decisões de Projeto
+### Estrutura do Projeto
+O back-end foi organizado seguindo padrões de mercado, com separação clara de Controller, Service e DTO.
 
-### 1. **Armazenamento Local (`localStorage`)**
-O projeto utiliza `localStorage` para armazenar os dados dos alunos, notas e frequência. Isso simplifica a implementação e garante persistência local dos dados enquanto o navegador estiver aberto ou até o usuário apagar os dados manualmente.
-
-**Decisão**: A escolha foi feita para evitar a necessidade de um backend e banco de dados, tornando o projeto mais simples e de fácil execução para fins educacionais ou prototipagem.
-
-### 2. **Validação de Dados no Frontend**
-Para garantir que os dados inseridos pelo usuário (notas e frequência) estejam dentro de limites válidos (notas entre 0 e 10, e frequência entre 0 e 100), a validação foi feita diretamente no frontend, utilizando atributos HTML (`min`, `max`) e lógica JavaScript.
-
-**Decisão**: Essa escolha foi feita para proporcionar uma experiência mais direta e rápida para o usuário, sem a complexidade de validações no backend.
-
-### 3. **Interface Responsiva**
-O projeto utiliza o **Bootstrap** para garantir que a interface seja responsiva e se ajuste bem em diferentes dispositivos, como desktop e mobile.
-
-**Decisão**: A escolha pelo Bootstrap visa fornecer uma solução pronta e eficiente para a construção de interfaces responsivas sem exigir muito trabalho adicional de CSS.
-
-### 4. **Simplicidade no Processo de Autenticação**
-O sistema de **login** e **criação de perfil** foi simplificado, armazenando as credenciais no `localStorage` sem criptografia.
-
-**Decisão**: A escolha foi feita para simplificar a implementação e permitir que o projeto funcione em um contexto local e sem a necessidade de um servidor backend.
+![Project Structure](./screenshots/project-structure.png)
 
 ---
 
-## Tecnologias Utilizadas
+## 🚀 Tecnologias e Boas Práticas Utilizadas
 
-- **HTML**: Estrutura básica da página web.
-- **CSS**: Estilização das páginas com layout moderno e responsivo.
-- **JavaScript**: Lógica de negócios para manipulação de notas, frequência e cálculos.
-- **Bootstrap**: Framework de design para tornar o sistema responsivo e bem estruturado.
-- **LocalStorage**: Armazenamento local dos dados (notas, frequência, alunos) no navegador, permitindo que as informações sejam persistidas entre recarregamentos da página.
-  
----
-Fotos
-# Tela Inicial
-![Captura de tela 2025-05-07 150048](https://github.com/user-attachments/assets/2ee04f94-1640-48a1-b376-9ab21775239b)
-# Criação de Perfil 
-![Captura de tela 2025-05-07 150544](https://github.com/user-attachments/assets/ce1397b6-8b68-4db9-a5d2-94f13abc5654)
-# Login
-![Captura de tela 2025-05-07 150505](https://github.com/user-attachments/assets/eb636096-0db5-432a-84c9-7536b718fcf9)
-# Adicionar Notas e Frequência
-![Captura de tela 2025-05-07 150948](https://github.com/user-attachments/assets/322d21f8-dbd1-4052-920f-fb1eb33a0add)
-# Saídas
-![Captura de tela 2025-05-07 151127](https://github.com/user-attachments/assets/82c6d86e-c0bf-48b0-aa38-508d7366e6dd)
+O projeto foi construído com uma arquitetura Full-stack, separando claramente as responsabilidades entre o cliente e o servidor:
+
+**Back-end (API REST):**
+* **Java & Spring Boot:** Lógica de negócio e rotas da API.
+* **Padrão DTO com Records:** Uso de `Records` do Java moderno para imutabilidade e tráfego limpo de dados (`StudentInput`, `StudentResult`, `SystemResponse`).
+* **JUnit 5:** Testes unitários garantindo a precisão dos cálculos matemáticos e regras de negócio do `GradeService`.
+
+**Front-end (Interface Web):**
+* **React.js:** Construção da interface de utilizador de forma reativa.
+* **CSS Responsivo (Media Queries):** Design adaptável que funciona perfeitamente em ecrãs de computador, tablets e telemóveis.
+* **Jest & React Testing Library:** Testes automatizados de interface para garantir o funcionamento correto dos alertas e renderização dos dados.
 
 ---
-# Vídeo funcional do site
-[Assista ao vídeo no YouTube](https://youtu.be/k49hA-HYdHY)
 
-## Como Rodar o Projeto
+## ⚙️ Como executar o projeto localmente
 
-1. **Clonar o Repositório**:
-   - Clone o repositório do projeto para o seu computador:
-   
-   ```bash
-   git clone <URL_DO_REPOSITORIO>
+Para testar a aplicação na sua máquina, precisará de ter o **Java (JDK)** e o **Node.js** instalados.
+
+### 1. Iniciar o Back-end (Spring Boot)
+O back-end utiliza o Maven Wrapper, pelo que não precisa de ter o Maven instalado globalmente.
+
+1. Abra um terminal na pasta raiz do projeto (`PROJETOESTAGIO`).
+2. Execute o comando para iniciar o servidor:
+   * No Windows: `mvnw spring-boot:run`
+   * No Linux/Mac: `./mvnw spring-boot:run`
+3. A API estará a correr em `http://localhost:8080`.
+
+### 2. Iniciar o Front-end (React)
+1. Abra **outro** terminal (mantenha o back-end a correr).
+2. Navegue para a pasta do front-end: `cd frontend`
+3. Instale as dependências do projeto: `npm install`
+4. Inicie a aplicação web: `npm start`
+5. O sistema abrirá automaticamente no seu browser em `http://localhost:3000`.
+
+---
+
+## 🧪 Como correr os Testes Automatizados
+
+A qualidade do código foi garantida através de testes unitários em ambas as camadas do projeto.
+
+* **Para testar o Back-end (Cálculos e Lógica):**
+    Na pasta raiz do projeto, execute:
+    `./mvnw test` (ou `mvnw test` no Windows)
+
+* **Para testar o Front-end (Interface e Validações):**
+    Na pasta `frontend`, execute:
+    `npm test`
+
+---
+
+## 💡 Funcionalidades Entregues
+- [x] Registo de alunos com nome, 5 notas e % de frequência.
+- [x] Bloqueio de inputs inválidos (ex: notas > 10 ou < 0).
+- [x] Processamento da média individual de cada aluno.
+- [x] Cálculo da média geral da turma.
+- [x] Cálculo da média da turma por disciplina.
+- [x] Identificação de alunos acima da média geral.
+- [x] Alerta para alunos com frequência inferior a 75%.
+- [x] Interface 100% responsiva (Mobile-friendly).
+
+---
+### 🎥 Veja o vídeo de apresentação
+
+[![Assista ao vídeo](https://img.youtube.com/vi/ID_DO_SEU_VIDEO/0.jpg)](https://youtu.be/8J5m9F2jyPU)
+
+---
+
+*Desenvolvido com dedicação para o processo seletivo da dti digital.*

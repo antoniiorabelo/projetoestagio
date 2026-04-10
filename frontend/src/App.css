@@ -1,0 +1,132 @@
+/* =========================================
+   RESET E FUNDO 
+   ========================================= */
+* { box-sizing: border-box; font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+
+body {
+  background-color: #F0F4F8;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cbd5e1' fill-opacity='0.25' font-family='Arial' font-size='24' font-weight='bold'%3E%3Ctext x='15' y='35'%3E+%3C/text%3E%3Ctext x='70' y='25'%3E=%3C/text%3E%3Ctext x='40' y='80'%3E%25%3C/text%3E%3Ctext x='95' y='95'%3E÷%3C/text%3E%3Ctext x='10' y='105'%3E8%3C/text%3E%3Ctext x='85' y='55'%3E%3C/text%3E%3C/g%3E%3C/svg%3E");
+  margin: 0; padding: 0; color: #102A43;
+}
+
+.app-container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
+
+.header-title {
+  text-align: center; color: #102A43; margin-bottom: 40px;
+  font-size: 2.5rem; font-weight: 800; letter-spacing: -1px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+/* =========================================
+   LAYOUT EM GRID
+   ========================================= */
+.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.full-width { grid-column: 1 / -1; }
+
+/* =========================================
+   CARTÕES E ANIMAÇÕES
+   ========================================= */
+.card {
+  background: #FFFFFF; border-radius: 16px; padding: 30px;
+  box-shadow: 0 10px 25px rgba(16, 42, 67, 0.08);
+  border: 1px solid rgba(217, 226, 236, 0.5);
+  backdrop-filter: blur(10px);
+  animation: slideUp 0.6s ease-out forwards; opacity: 0; transform: translateY(20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(16, 42, 67, 0.12); }
+.card h3, .card h2 { margin-top: 0; color: #243B53; border-bottom: 2px solid #E4E7EB; padding-bottom: 15px; margin-bottom: 25px; font-weight: 700; }
+.card h4 { color: #334E68; margin-top: 30px; margin-bottom: 15px; font-weight: 600; }
+
+/* =========================================
+   FORMULÁRIOS E INPUTS
+   ========================================= */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 10px; color: #243B53; }
+.input-field { width: 100%; padding: 12px 18px; border: 2px solid #D9E2EC; border-radius: 10px; font-size: 1rem; color: #102A43; transition: all 0.3s ease; }
+.input-field:focus { outline: none; border-color: #62B0E8; box-shadow: 0 0 0 4px rgba(98, 176, 232, 0.2); transform: scale(1.02); }
+
+.grades-container { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* CLASSE NOVA PARA CONTROLAR A LARGURA DAS NOTAS */
+.grade-input-wrapper {
+  flex: 1 1 calc(33.33% - 12px); /* Tenta colocar 3 por linha no PC */
+  min-width: 80px;
+}
+
+.discipline-label-form { font-size: 0.8rem; color: #486581; margin-bottom: 6px; display: block; font-weight: 500; white-space: nowrap; }
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+.btn { padding: 14px 28px; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); width: 100%; }
+.btn-secondary { background-color: #E4E7EB; color: #243B53; margin-top: 10px; }
+.btn-secondary:hover { background-color: #CBD5E1; transform: translateY(-2px); }
+.btn-primary { background-color: #215A9A; color: white; margin-top: 20px; box-shadow: 0 4px 12px rgba(33, 90, 154, 0.3); }
+.btn-primary:hover { background-color: #184477; box-shadow: 0 8px 20px rgba(33, 90, 154, 0.4); transform: translateY(-3px); }
+.btn:active { transform: translateY(1px); }
+
+/* =========================================
+   LISTAS E RESULTADOS
+   ========================================= */
+.student-list { list-style: none; padding: 0; margin: 0 0 25px 0; }
+.student-list li {
+  background-color: #F8FAFC; border-left: 4px solid #62B0E8; padding: 15px 20px; border-radius: 6px 10px 10px 6px;
+  margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; color: #102A43;
+  transition: background-color 0.3s ease;
+}
+.student-list li:hover { background-color: #EBF4FA; }
+
+/* SOLUÇÃO PARA NOMES GIGANTES */
+.student-name {
+  font-size: 1.05rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  max-width: 100%;
+}
+.student-freq { color: #627D98; font-size: 0.9rem; white-space: nowrap; margin-left: 10px; }
+
+.result-list { padding-left: 20px; color: #243B53; }
+.result-list li { margin-bottom: 10px; line-height: 1.5; }
+.highlight-box { background-color: #F0F9FF; padding: 20px; border-radius: 12px; border: 1px solid #BEE3F8; color: #102A43; }
+.highlight-box-list { list-style-type: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 15px;}
+.highlight-box-list li { background: #E0F2FE; padding: 8px 15px; border-radius: 8px; font-size: 0.95rem; }
+.highlight-box-list strong { color: #215A9A; }
+.empty-state { color: #627D98; font-style: italic; text-align: center; margin: 20px 0; }
+.warning-text { color: #C02424; font-weight: bold; }
+
+@keyframes slideUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+
+/* =========================================
+   MEDIA QUERIES (A MAGIA DA RESPONSIVIDADE)
+   ========================================= */
+
+/* Tablets e Ecrãs Médios */
+@media (max-width: 900px) {
+  .dashboard-grid { grid-template-columns: 1fr; } /* Coloca uma coluna debaixo da outra */
+  .grade-input-wrapper { flex: 1 1 calc(50% - 12px); } /* Notas ficam 2 por linha */
+}
+
+/* Telemóveis */
+@media (max-width: 600px) {
+  .app-container { padding: 0 15px; margin: 20px auto; }
+  
+  .header-title { font-size: 1.8rem; margin-bottom: 25px; } /* Reduz o título para não esmagar */
+  
+  .card { padding: 20px; } /* Diminui as bordas internas do cartão para ganhar espaço */
+  
+  /* Se o nome do aluno for muito grande no telemóvel, coloca a frequência na linha de baixo */
+  .student-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .student-freq { margin-left: 0; }
+}
+
+/* Telemóveis muito pequenos */
+@media (max-width: 360px) {
+  .grade-input-wrapper { flex: 1 1 100%; } /* Notas ficam 1 por linha para não esmagar os números */
+}
